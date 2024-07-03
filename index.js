@@ -1,17 +1,18 @@
 const http = require("http");
-const os = require("os");
+const fs = require("fs");
 
-http
-  .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    //calculate your RAM
-    const myRAM = os.totalmem().toFixed(2);
-    const toogb = myRAM / (1024 * 1024 * 1024);
-    res.end(
-      JSON.stringify({
-        data: toogb + "Gb",
-      })
-    );
-  })
-  .listen(8800);
-//hw
+http.createServer((req, res) => {}).listen(8800);
+
+fs.writeFile("hello.txt", "this is an assingment", (error) => {
+  if (error) {
+    console.log("error");
+  }
+});
+
+fs.readFile("hello.txt", "utf8", (error, data) => {
+  if (error) {
+    console.log(error.message);
+  } else {
+    console.log(data);
+  }
+});
