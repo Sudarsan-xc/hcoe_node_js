@@ -18,3 +18,7 @@ http.createServer((req, res) => {}).listen(8800);
 // });
 //building modules
 // inbuilt modules
+const { properCase, slugify, truncate } = require("./string");
+console.log(properCase("hello"));
+console.log(slugify("Hello World"));
+console.log(truncate("Hello World This is the first time i am using node js"));
