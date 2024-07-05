@@ -74,34 +74,46 @@
 // bycript
 
 //password encrypt
-const bcrypt = require('bcrypt');
+// 
 
-const data = "sudarsan";
-
-const changedfun = async (value) => {
-  try {
-    return await bcrypt.hash(value, 10);
-  } catch (e) {
-    console.log('error', e);
-  }
-};
-
-const comparefunction = async (planedata, hashevalue) => {
-  try {
-    return await bcrypt.compare(planedata, hashevalue);
-  } catch (e) {
-    console.log('error in the code', e);
-  }
-};
-changedfun(data).then((hashdata) => {
-  console.log('Hashed Data:', hashdata);
-
-  comparefunction(data, hashdata).then((ismatched) => {
-    if (ismatched) {
-      console.log('The value is matched');
-    } else {
-      console.log('The value is not matched');
+// node mailer
+//text msg
+//file attach
+//direct body image
+require("dotenv").config();
+const nodemailer=require("nodemailer");
+//transport
+const transporter= nodemailer.createTransport({
+    service:process.env.EMAIL_SERVICE,
+    auth:{
+        user:process.env.EMAIL_USER,
+        pass:process.env.EMAIL_PW
     }
-
+});transporter.verify((err)=>{
+if (err) console.log(err);
+console.log("email is working");
 });
+
+const sendEmail=async ({email, subject,message,attachments})=>{
+
+const info= await transporter.sendMail({
+    from:`"Sudarshan Sharma"<${process.env.EMAIL_USER}`,
+    to:email,
+    subject:subject,
+    html:message,
+    attachments,
+});
+return info;
+};
+sendEmail({
+    email:"suman121pok@gmail.com",
+    subject:"k x ayrr",
+    message:"<div>Gaddar giley<div>img src='cid:Gaddar-hOS-TA'/>",
+    attachments:[{
+        filename:'giley.png',
+        path:'./giley.png',
+        cid:"Gaddar-hOS-TA"
+    }
+    ]
+      
 });
