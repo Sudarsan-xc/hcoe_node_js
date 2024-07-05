@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "i": "^0.3.7",
+    "loadash": "^1.0.0",
     "proper-upper-case": "^0.1.0"
   }
 }
