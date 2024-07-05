@@ -54,3 +54,54 @@
 // const result = convert("sudarsan SHARMA");
 // console.log(result);
 
+// const slugify=require('slugify');
+//  var changeddata='hello i am god of the world';
+
+// const slugfunction=(data)=>{
+//   return slugify(data);
+// }
+// console.log(slugfunction(changeddata));
+
+// //lodash(truncate)
+//   const truncate=require('truncate');
+//   const value='hello it is beatufull day today i am bleesed that this day i am leaving';
+
+//   const truncates=(data,length)=>{
+//  return truncate(data,length);
+//   }
+
+//  console.log(truncates(value,20));
+// bycript
+
+//password encrypt
+const bcrypt = require('bcrypt');
+
+const data = "sudarsan";
+
+const changedfun = async (value) => {
+  try {
+    return await bcrypt.hash(value, 10);
+  } catch (e) {
+    console.log('error', e);
+  }
+};
+
+const comparefunction = async (planedata, hashevalue) => {
+  try {
+    return await bcrypt.compare(planedata, hashevalue);
+  } catch (e) {
+    console.log('error in the code', e);
+  }
+};
+changedfun(data).then((hashdata) => {
+  console.log('Hashed Data:', hashdata);
+
+  comparefunction(data, hashdata).then((ismatched) => {
+    if (ismatched) {
+      console.log('The value is matched');
+    } else {
+      console.log('The value is not matched');
+    }
+
+});
+});
