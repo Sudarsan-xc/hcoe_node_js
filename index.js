@@ -80,40 +80,71 @@
 //text msg
 //file attach
 //direct body image
-require("dotenv").config();
-const nodemailer=require("nodemailer");
-//transport
-const transporter= nodemailer.createTransport({
-    service:process.env.EMAIL_SERVICE,
-    auth:{
-        user:process.env.EMAIL_USER,
-        pass:process.env.EMAIL_PW
-    }
-});transporter.verify((err)=>{
-if (err) console.log(err);
-console.log("email is working");
-});
+// require("dotenv").config();
+// const nodemailer=require("nodemailer");
+// //transport
+// const transporter= nodemailer.createTransport({
+//     service:process.env.EMAIL_SERVICE,
+//     auth:{
+//         user:process.env.EMAIL_USER,
+//         pass:process.env.EMAIL_PW
+//     }
+// });transporter.verify((err)=>{
+// if (err) console.log(err);
+// console.log("email is working");
+// });
 
-const sendEmail=async ({email, subject,message,attachments})=>{
+// const sendEmail=async ({email, subject,message,attachments})=>{
 
-const info= await transporter.sendMail({
-    from:`"Sudarshan Sharma"<${process.env.EMAIL_USER}`,
-    to:email,
-    subject:subject,
-    html:message,
-    attachments,
-});
-return info;
-};
-sendEmail({
-    email:"suman121pok@gmail.com",
-    subject:"k x ayrr",
-    message:"<div>Gaddar giley<div>img src='cid:Gaddar-hOS-TA'/>",
-    attachments:[{
-        filename:'giley.png',
-        path:'./giley.png',
-        cid:"Gaddar-hOS-TA"
-    }
-    ]
+// const info= await transporter.sendMail({
+//     from:`"Sudarshan Sharma"<${process.env.EMAIL_USER}`,
+//     to:email,
+//     subject:subject,
+//     html:message,
+//     attachments,
+// });
+// return info;
+// };
+// sendEmail({
+//     email:"suman121pok@gmail.com",
+//     subject:"k x ayrr",
+//     message:"<div>Gaddar giley<div>img src='cid:Gaddar-hOS-TA'/>",
+//     attachments:[{
+//         filename:'giley.png',
+//         path:'./giley.png',
+//         cid:"Gaddar-hOS-TA"
+//     }
+//     ]
       
-});
+// });
+// const QRCode = require('qrcode');
+
+// const url = 'https://www.example.com';
+
+// QRCode.toFile('qrcode.png', url, {
+//   color: {
+//     dark: '#000000',  
+//     light: '#ffffff'  
+// }, function (err) {
+//   if (err) throw err;
+//   console.log('QR code has been generated ');
+// });
+
+
+// QRCode.toString(url, { type: 'terminal' }, function (err, url) {
+//   if (err) throw err;
+//   console.log(url);
+// });
+// const CurrencyConverter = require('currency-converter-lt');
+
+// const fromCurrency = 'USD'; 
+// const toCurrency = 'EUR';   
+// const amount = 100;         
+
+// let currencyConverter = new CurrencyConverter();
+
+// currencyConverter.from(fromCurrency).to(toCurrency).amount(amount).convert().then((response) => {
+//   console.log(`${amount} ${fromCurrency} is equal to ${response} ${toCurrency}`);
+// }).catch((err) => {
+//   console.error(err);
+// });
